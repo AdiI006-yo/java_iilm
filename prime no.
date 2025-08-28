@@ -1,30 +1,29 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class PrimeCheck {
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter a number: ");
-        int num = sc.nextInt();
+        int n = sc.nextInt();
 
-        boolean isPrime = true;
+        boolean isPrime = true;  // assume the number is prime
 
-        if (num <= 1) {
-            isPrime = false;
+        if (n <= 1) {
+            isPrime = false;   // 0 and 1 are not prime
         } else {
-            for (int i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i == 0) {
+            for (int i = 2; i < n; i++) {  // check divisors from 2 to n-1
+                if (n % i == 0) {         // if divisible, not prime
                     isPrime = false;
-                    break;
+                    break;               // stop the loop immediately
                 }
             }
         }
 
-        if (isPrime) {
-            System.out.println(num + " is a Prime Number.");
-        } else {
-            System.out.println(num + " is NOT a Prime Number.");
-        }
+        if (isPrime)
+            System.out.println(n + " is a prime number.");
+        else
+            System.out.println(n + " is not a prime number.");
 
         sc.close();
     }
